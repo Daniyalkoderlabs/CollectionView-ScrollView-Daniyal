@@ -13,6 +13,10 @@
 		2ED070342162639800A1FD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ED070332162639800A1FD6C /* Assets.xcassets */; };
 		2ED070372162639800A1FD6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED070352162639800A1FD6C /* LaunchScreen.storyboard */; };
 		2ED0703A2162639800A1FD6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED070392162639800A1FD6C /* main.m */; };
+		2ED070432162646000A1FD6C /* TopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED070412162646000A1FD6C /* TopCollectionViewCell.m */; };
+		2ED070442162646000A1FD6C /* TopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED070422162646000A1FD6C /* TopCollectionViewCell.xib */; };
+		2ED070482162646C00A1FD6C /* BottomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED070462162646C00A1FD6C /* BottomCollectionViewCell.m */; };
+		2ED070492162646C00A1FD6C /* BottomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED070472162646C00A1FD6C /* BottomCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,12 @@
 		2ED070362162639800A1FD6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ED070382162639800A1FD6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ED070392162639800A1FD6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2ED070402162646000A1FD6C /* TopCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopCollectionViewCell.h; sourceTree = "<group>"; };
+		2ED070412162646000A1FD6C /* TopCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopCollectionViewCell.m; sourceTree = "<group>"; };
+		2ED070422162646000A1FD6C /* TopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCollectionViewCell.xib; sourceTree = "<group>"; };
+		2ED070452162646C00A1FD6C /* BottomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomCollectionViewCell.h; sourceTree = "<group>"; };
+		2ED070462162646C00A1FD6C /* BottomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomCollectionViewCell.m; sourceTree = "<group>"; };
+		2ED070472162646C00A1FD6C /* BottomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,12 @@
 				2ED070352162639800A1FD6C /* LaunchScreen.storyboard */,
 				2ED070382162639800A1FD6C /* Info.plist */,
 				2ED070392162639800A1FD6C /* main.m */,
+				2ED070402162646000A1FD6C /* TopCollectionViewCell.h */,
+				2ED070412162646000A1FD6C /* TopCollectionViewCell.m */,
+				2ED070422162646000A1FD6C /* TopCollectionViewCell.xib */,
+				2ED070452162646C00A1FD6C /* BottomCollectionViewCell.h */,
+				2ED070462162646C00A1FD6C /* BottomCollectionViewCell.m */,
+				2ED070472162646C00A1FD6C /* BottomCollectionViewCell.xib */,
 			);
 			path = 5MilesScrollView;
 			sourceTree = "<group>";
@@ -128,7 +144,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED070442162646000A1FD6C /* TopCollectionViewCell.xib in Resources */,
 				2ED070372162639800A1FD6C /* LaunchScreen.storyboard in Resources */,
+				2ED070492162646C00A1FD6C /* BottomCollectionViewCell.xib in Resources */,
 				2ED070342162639800A1FD6C /* Assets.xcassets in Resources */,
 				2ED070322162639700A1FD6C /* Main.storyboard in Resources */,
 			);
@@ -141,9 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED070432162646000A1FD6C /* TopCollectionViewCell.m in Sources */,
 				2ED0702F2162639700A1FD6C /* ViewController.m in Sources */,
 				2ED0703A2162639800A1FD6C /* main.m in Sources */,
 				2ED0702C2162639700A1FD6C /* AppDelegate.m in Sources */,
+				2ED070482162646C00A1FD6C /* BottomCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
