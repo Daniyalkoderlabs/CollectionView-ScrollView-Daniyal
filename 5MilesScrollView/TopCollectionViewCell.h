@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TopCollectionViewCell : UICollectionViewCell
-
+- (void)bindData: (NSString *)title;
 @end
 
 NS_ASSUME_NONNULL_END

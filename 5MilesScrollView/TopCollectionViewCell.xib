@@ -20,18 +20,31 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aav-DE-GKF">
                         <rect key="frame" x="0.0" y="0.0" width="122" height="121"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.67450980390000004" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAR-UQ-9J7">
+                        <rect key="frame" x="40" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="yAR-UQ-9J7" firstAttribute="top" secondItem="aav-DE-GKF" secondAttribute="top" constant="11" id="8bU-5o-Zlm"/>
                 <constraint firstAttribute="bottom" secondItem="aav-DE-GKF" secondAttribute="bottom" id="DFv-FI-Pi2"/>
                 <constraint firstAttribute="trailing" secondItem="aav-DE-GKF" secondAttribute="trailing" id="QWN-15-r4b"/>
                 <constraint firstItem="aav-DE-GKF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="iHn-cO-wBO"/>
+                <constraint firstItem="yAR-UQ-9J7" firstAttribute="centerY" secondItem="aav-DE-GKF" secondAttribute="centerY" constant="-39" id="iW1-pw-yJf"/>
                 <constraint firstItem="aav-DE-GKF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pQg-fz-xs1"/>
+                <constraint firstItem="yAR-UQ-9J7" firstAttribute="centerX" secondItem="aav-DE-GKF" secondAttribute="centerX" id="uM9-Yd-30W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="122" height="121"/>
-            <point key="canvasLocation" x="65" y="94.5"/>
+            <connections>
+                <outlet property="lblTitle" destination="yAR-UQ-9J7" id="MPu-Qs-EYX"/>
+            </connections>
+            <point key="canvasLocation" x="-286" y="-70"/>
         </collectionViewCell>
     </objects>
 </document>

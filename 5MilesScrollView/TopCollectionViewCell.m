@@ -8,11 +8,20 @@
 
 #import "TopCollectionViewCell.h"
 
-@implementation TopCollectionViewCell
+@implementation TopCollectionViewCell {
+    
+    __weak IBOutlet UILabel *lblTitle;\
+    
+    
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
+
+- (void)bindData: (NSString *)title {
+    lblTitle.text = title;
+}
 @end

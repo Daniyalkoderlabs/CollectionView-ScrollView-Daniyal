@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BottomCollectionViewCell : UICollectionViewCell
+@interface BottomCollectionViewCell : UICollectionViewCell {
+    
+    __weak IBOutlet UILabel *lblTitle;
+}
 
+- (void)bindData :(NSString *)title;
+- (void)backGroundColor: (UIColor *)color;
 @end
 
 NS_ASSUME_NONNULL_END

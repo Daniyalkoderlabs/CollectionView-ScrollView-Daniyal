@@ -8,11 +8,21 @@
 
 #import "BottomCollectionViewCell.h"
 
-@implementation BottomCollectionViewCell
+@implementation BottomCollectionViewCell {
+    
+    __weak IBOutlet UIImageView *baseImageView;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
+- (void)bindData:(NSString *)title {
+    lblTitle.text = title;
+}
+
+- (void)backGroundColor: (UIColor *)color {
+    baseImageView.backgroundColor = color;
+}
 @end
