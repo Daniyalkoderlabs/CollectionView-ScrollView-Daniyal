@@ -29,6 +29,8 @@
     [collectionViewBottom registerNib:[UINib nibWithNibName:@"BottomCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bottomcell"];
 }
 
+#pragma mark - COLLECTIONVIEW DATASOURCE AND DELEGATE
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1.0;
     
@@ -78,24 +80,19 @@
     return 4.0;
 }
 
-
-- (void)moveToFrame:(CGFloat)contentOffset {
-    CGRect frame = CGRectMake(contentOffset, collectionViewBottom.contentOffset.y, collectionViewBottom.frame.size.width, collectionViewBottom.frame.size.height);
-    [collectionViewBottom scrollRectToVisible:frame animated:YES];
-}
-
-
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {}
 
-- (void)updateCell {
-    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
-    [bottomCell setSelected:YES];
-}
 
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     counter = indexPath.row;
 }
+
+
+- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    
+}
+
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {}
 
@@ -106,6 +103,9 @@
         
     }
 }
+
+#pragma mark - SCROLLVIEW DATASOURCE AND DELEGATE
+
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     [self updateBottomViewState];
@@ -119,21 +119,45 @@
     
 }
 
+
+#pragma mark - HELPER METHODS
+
+
+- (void)updateCell {
+    [self setSelectedState:counter];
+}
+
+//this method has been stagnated....
+
+- (void)moveToFrame:(CGFloat)contentOffset {
+    CGRect frame = CGRectMake(contentOffset, collectionViewBottom.contentOffset.y, collectionViewBottom.frame.size.width, collectionViewBottom.frame.size.height);
+    [collectionViewBottom scrollRectToVisible:frame animated:YES];
+}
+
+
+
 - (void)updateBottomViewState {
     
     [collectionViewBottom scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
+    [self rollbackallVisibleCells];
     
+    [self setSelectedState:counter];
+    
+    
+   
+}
+
+
+- (void)rollbackallVisibleCells {
     for (BottomCollectionViewCell *bottomCell in collectionViewBottom.visibleCells) {
         [bottomCell setSelected:NO];
     }
-    
-    
-    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
+}
+
+- (void)setSelectedState: (NSInteger )count {
+    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0]];
     bottomCell.selected = YES;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
-    
-}
 @end
