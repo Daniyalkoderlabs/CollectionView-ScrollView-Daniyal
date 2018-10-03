@@ -80,7 +80,9 @@
     return 4.0;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {}
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 
 
@@ -108,7 +110,10 @@
 
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self updateBottomViewState];
+    if (scrollView == collectionViewBottom) {
+        [self updateBottomViewState];
+    }
+    
 }
 
 
@@ -138,11 +143,13 @@
 
 - (void)updateBottomViewState {
     
-    [collectionViewBottom scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    
     
     [self rollbackallVisibleCells];
     
     [self setSelectedState:counter];
+    
+    [collectionViewBottom scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
     
    
