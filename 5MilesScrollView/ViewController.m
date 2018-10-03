@@ -27,10 +27,9 @@
     counter = 0;
     [collectionViewTop registerNib:[UINib nibWithNibName:@"TopCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"topcell"];
     [collectionViewBottom registerNib:[UINib nibWithNibName:@"BottomCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bottomcell"];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1.0;
     
 }
@@ -51,11 +50,11 @@
         [topCell bindData: [NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         return  topCell;
     }
-
+    
     
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == collectionViewTop) {
         return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.height);
     }
@@ -65,14 +64,14 @@
 
 
 
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     if (collectionView == collectionViewTop) {
         return 0;
     }
     return 4.0;
 }
 
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     if (collectionView == collectionViewTop) {
         return 0;
     }
@@ -86,57 +85,37 @@
 }
 
 
--(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-   /* if (collectionViewTop == collectionView) {
-        for (NSIndexPath *indexPath in [collectionViewBottom indexPathsForVisibleItems]) {
-                BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:indexPath];
-                [bottomCell setSelected:NO];
-        }
-        
-        [self performSelector:@selector(updateCell) withObject:nil afterDelay:0.1];
-    }*/
-   
-}
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {}
 
 - (void)updateCell {
-    NSLog(@"%ld",(long)counter);
-    NSLog(@"%@",collectionViewBottom.indexPathsForSelectedItems);
-        BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
-       [bottomCell setSelected:YES];
+    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
+    [bottomCell setSelected:YES];
 }
--(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     counter = indexPath.row;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    /*for (NSIndexPath *indexPath in [collectionViewBottom indexPathsForVisibleItems]) {
-            BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:indexPath];
-           [bottomCell setSelected:NO];
-    }
-    counter = indexPath.row;*/
-    
-}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-   /* NSLog(@"%@",collectionViewBottom.indexPathsForSelectedItems);
+    
     if (collectionView == collectionViewBottom) {
         [collectionViewTop scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        
     }
-    counter = indexPath.row;*/
-    
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-   
+    [self updateBottomViewState];
 }
 
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == collectionViewTop) {
         [self updateBottomViewState];
-    } else {
-       
-    }
+    } else {    }
     
 }
 
@@ -145,18 +124,16 @@
     [collectionViewBottom scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
     
-    /*for (BottomCollectionViewCell *bottomCell in collectionViewBottom.visibleCells) {
+    for (BottomCollectionViewCell *bottomCell in collectionViewBottom.visibleCells) {
         [bottomCell setSelected:NO];
-    }*/
-    
-   // BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
-   // [bottomCell setSelected:YES];
+    }
     
     
-   // [bottomCell backGroundColor:[UIColor greenColor]];
+    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
+    bottomCell.selected = YES;
 }
 
--(void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
     
 }
 @end
