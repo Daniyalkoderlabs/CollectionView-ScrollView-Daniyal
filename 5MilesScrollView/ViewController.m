@@ -116,7 +116,16 @@
 - (void)updateBottomViewState {
     
     [collectionViewBottom scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-  //  BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
+    
+    
+    for (BottomCollectionViewCell *bottomCell in collectionViewBottom.visibleCells) {
+        [bottomCell setSelected:NO];
+    }
+    
+    BottomCollectionViewCell *bottomCell = (BottomCollectionViewCell *) [collectionViewBottom cellForItemAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:0]];
+    [bottomCell setSelected:YES];
+    
+    
    // [bottomCell backGroundColor:[UIColor greenColor]];
 }
 

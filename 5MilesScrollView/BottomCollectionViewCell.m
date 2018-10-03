@@ -18,6 +18,21 @@
     // Initialization code
 }
 
+
+-(void)setSelected:(BOOL)selected {
+    
+    [super setSelected:selected];
+    
+    
+    if (selected) {
+        baseImageView.backgroundColor = [UIColor greenColor];
+    } else {
+        baseImageView.backgroundColor = [UIColor redColor];
+    }
+ 
+    
+    
+}
 - (void)bindData:(NSString *)title {
     lblTitle.text = title;
 }
