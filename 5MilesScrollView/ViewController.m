@@ -81,13 +81,18 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (collectionView == collectionViewTop) {
+         counter = indexPath.row;
+    }
 }
 
 
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    counter = indexPath.row;
+    if (collectionView == collectionViewTop) {
+        counter = indexPath.row;
+    }
+    
 }
 
 
@@ -120,7 +125,10 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == collectionViewTop) {
         [self updateBottomViewState];
-    } else {    }
+    } else {
+        [self setSelectedState:counter];
+        
+    }
     
 }
 
